@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class User {
 	@NotBlank(message = "Username cannot be empty")
 	private String username;
-
+	private String password;
 }
