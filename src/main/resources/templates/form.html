@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Validator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+    <body>
+    <div class="container mt-5">
+        <form action="#" th:action="@{/log}" th:object="${personForm}" method="post">
+            <div class="mb-3">
+                <label for="inputName" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" th:field="*{name}">
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger" ></p>
+                <div id="nameHelp" class="form-text">Input your name here.</div>
+            </div>
+            <div class="mb-3">
+                <label for="inputAge" class="form-label">Age</label>
+                <input type="text" class="form-control" id="inputAge" th:field="*{age}">
+                <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="alert alert-danger" ></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </div>
+    </body>
+</html>
