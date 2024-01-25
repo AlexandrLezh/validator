@@ -18,11 +18,6 @@ public class WebController implements WebMvcConfigurer {
 		registry.addViewController("/results").setViewName("results");
 	}
 
-
-	@GetMapping("/log")
-	public String showForm(PersonForm personForm) {
-		return "form";
-	}
 	@GetMapping("/reg")
 	public String showMain(User user) {
 		return "main";
@@ -38,6 +33,28 @@ public class WebController implements WebMvcConfigurer {
 		}
 
 		return "redirect:/results";
+	}
+
+	@GetMapping("/free")
+	public String showMFree(User user) {
+		return "free";
+	}
+	@PostMapping("/free")
+	public String checkFree(@Valid User user, BindingResult bindingResult, Model model) {
+
+		if (bindingResult.hasErrors()) {
+			Map<String, String> errors = ControllerUtils.getErrors(bindingResult);
+
+			model.mergeAttributes(errors);
+			return "free";
+		}
+
+		return "redirect:/results";
+	}
+
+	@GetMapping("/log")
+	public String showForm(PersonForm personForm) {
+		return "form";
 	}
 	@PostMapping("/log")
 	public String checkPersonInfo(@Valid PersonForm personForm, BindingResult bindingResult, Model model) {
